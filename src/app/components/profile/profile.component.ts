@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConnectionService } from '../../services/connection.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+  	private connectionService: ConnectionService
+  ) { }
 
   ngOnInit() {
+  	this.getMe();
+  }
+
+  getMe(){
+  	this.connectionService.getCurrentUser().subscribe(
+  		result=>{
+  			console.log(result);
+  		},
+  		error=>{
+  			console.log(<any>error);
+  		}
+  	);
   }
 
 }

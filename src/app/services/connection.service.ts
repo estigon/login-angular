@@ -22,4 +22,9 @@ export class ConnectionService {
 		return this._httpClient.post(this.url+'auth/register ',data);
 	}
 
+	public getCurrentUser(){
+    	return this._httpClient.get(this.url+'auth/me');
+ 	}
+
+
 }
